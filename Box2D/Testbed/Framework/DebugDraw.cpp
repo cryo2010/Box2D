@@ -24,6 +24,7 @@
 #include <glew/glew.h>
 #endif
 
+#include <cstdlib>
 #include <glfw/glfw3.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -136,7 +137,7 @@ static void sPrintLog(GLuint object)
 		return;
 	}
 
-	char* log = (char*)malloc(log_length);
+	char* log = (char*)std::malloc(log_length);
 
 	if (glIsShader(object))
 		glGetShaderInfoLog(object, log_length, NULL, log);
@@ -144,7 +145,7 @@ static void sPrintLog(GLuint object)
 		glGetProgramInfoLog(object, log_length, NULL, log);
 
 	fprintf(stderr, "%s", log);
-	free(log);
+    std::free(log);
 }
 
 
